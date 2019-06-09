@@ -8,7 +8,7 @@ class MapPage extends StatefulWidget {
   _MapPageState createState() => _MapPageState();
 }
 
-class _MapPageState extends State<MapPage> {
+class _MapPageState extends State<MapPage> with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     super.initState();
@@ -16,6 +16,7 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return WillPopScope(
       onWillPop: () async {
         return true;
@@ -211,4 +212,7 @@ class _MapPageState extends State<MapPage> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

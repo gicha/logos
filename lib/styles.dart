@@ -4,7 +4,7 @@ const Color blackColor = Color(0xFF000000);
 const Color whiteColor = Color(0xFFFFFFFF);
 
 ///#1ca385
-const Color greenColor = Color(0xFF1ca385);
+const Color greenColor = Color(0xFF5aab14);
 
 ///#30bcd0
 const Color lightBlueColor = Color(0xFF30bcd0);
