@@ -31,7 +31,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
           elevation: 10,
           backgroundColor: Colors.white,
           currentIndex: page,
-          type: BottomNavigationBarType.shifting,
+          type: BottomNavigationBarType.fixed,
           onTap: (int _page) {
             setState(() {
               page = _page;

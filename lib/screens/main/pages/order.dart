@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
+import 'package:logos/blocs/bloc.dart';
+import 'package:logos/services/utils.dart';
 import 'package:logos/styles.dart';
 
 class OrderPage extends StatefulWidget {
@@ -55,7 +57,9 @@ class _OrderPageState extends State<OrderPage> {
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Center(child: Text("Подтвердить доставку", style: genTextStyle(whiteColor, 12, normalWeight))),
           ),
-          onTap: () {},
+          onTap: () {
+            MainBloc.getInstance().dispatch(MainConfirmEvent());
+          },
         ),
       ),
     );
@@ -77,7 +81,7 @@ class _OrderPageState extends State<OrderPage> {
                 children: <Widget>[
                   Text("#123-765", style: genTextStyle(blueColor, 26, FontWeight.w700)),
                   SizedBox(width: 25),
-                  topTable(),
+                  badgePhone(),
                 ],
               ),
             ],
@@ -87,23 +91,28 @@ class _OrderPageState extends State<OrderPage> {
     );
   }
 
-  Widget topTable() {
+  Widget badgePhone() {
     return Align(
       alignment: Alignment.topCenter,
       child: Padding(
         padding: EdgeInsets.only(top: 0.0),
-        child: Container(
-          width: 120,
-          height: 35,
-          padding: EdgeInsets.all(7),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(45), border: Border.all(color: blackColor.withOpacity(0.15))),
-          child: Row(
-            children: <Widget>[
-              Icon(Icons.phone, size: 20, color: blueColor),
-              SizedBox(width: 7),
-              Text("Позвонить", style: genTextStyle(blackColor, normalSize, FontWeight.w500)),
-            ],
+        child: GestureDetector(
+          onTap: () {
+            Utils.launchUrl("tel:+79992193928");
+          },
+          child: Container(
+            width: 120,
+            height: 35,
+            padding: EdgeInsets.all(7),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(45), border: Border.all(color: blackColor.withOpacity(0.15))),
+            child: Row(
+              children: <Widget>[
+                Icon(Icons.phone, size: 20, color: blueColor),
+                SizedBox(width: 7),
+                Text("Позвонить", style: genTextStyle(blackColor, normalSize, FontWeight.w500)),
+              ],
+            ),
           ),
         ),
       ),
@@ -143,7 +152,7 @@ class _OrderPageState extends State<OrderPage> {
       alignment: Alignment.topCenter,
       child: Card(
         margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * .22, left: 3, right: 3),
-        elevation: 2,
+        elevation: 4,
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: 100,
@@ -164,7 +173,7 @@ class _OrderPageState extends State<OrderPage> {
                         children: <Widget>[
                           Text("Точка отправки", style: genTextStyle(blackColor.withOpacity(0.25), smallSize)),
                           SizedBox(height: 4),
-                          Text("Московский 123", style: genTextStyle(blackColor, normalSize, FontWeight.w500)),
+                          Text("Садовая ул. 20", style: genTextStyle(blackColor, normalSize, FontWeight.w500)),
                         ],
                       ),
                     ),
@@ -176,7 +185,7 @@ class _OrderPageState extends State<OrderPage> {
                         children: <Widget>[
                           Text("Точка доставки", style: genTextStyle(blackColor.withOpacity(0.25), smallSize)),
                           SizedBox(height: 4),
-                          Text("Московский 123", style: genTextStyle(blackColor, normalSize, FontWeight.w500)),
+                          Text("Рубинштейна ул. 20", style: genTextStyle(blackColor, normalSize, FontWeight.w500)),
                           SizedBox(height: 4),
                         ],
                       ),
@@ -257,7 +266,7 @@ class _OrderPageState extends State<OrderPage> {
         layers: [
           TileLayerOptions(
             urlTemplate:
-                "https://1.base.maps.api.here.com/maptile/2.1/maptile/newest/normal.day.mobile/{z}/{x}/{y}/256/png8?app_id=wH3fRkM7VQNDr4QAqFhi&app_code=wV9adGXFnerl052QiUC50A",
+                "https://1.base.maps.api.here.com/maptile/2.1/maptile/newest/reduced.day/{z}/{x}/{y}/256/png8?app_id=wH3fRkM7VQNDr4QAqFhi&app_code=wV9adGXFnerl052QiUC50A",
           ),
           MarkerLayerOptions(
             markers: [
@@ -265,13 +274,19 @@ class _OrderPageState extends State<OrderPage> {
                 width: 30.0,
                 height: 30.0,
                 point: LatLng(51.5, -0.09),
-                builder: (ctx) => GestureDetector(child: FlutterLogo()),
+                builder: (ctx) => GestureDetector(child: Image.asset(
+                  "assets/logo.png",
+                  width: 25,
+                )),
               ),
               Marker(
                 width: 30.0,
                 height: 30.0,
-                point: LatLng(51.45, -0.085),
-                builder: (ctx) => GestureDetector(child: FlutterLogo()),
+                point: LatLng(51.505, -0.092),
+                builder: (ctx) => GestureDetector(child: Image.asset(
+                  "assets/logo.png",
+                  width: 25,
+                ),),
               ),
             ],
           ),

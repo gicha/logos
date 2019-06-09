@@ -1,4 +1,4 @@
-part of digibreak.bloc;
+part of logos.bloc;
 
 abstract class InitEvent {}
 

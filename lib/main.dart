@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,6 @@ void main() {
 
 void startHome() async {
   var bloc = InitBloc.getInstance();
-  NotificationBloc.getInstance();
   bloc.dispatch(InitInitEvent());
 
   runApp(
@@ -113,8 +113,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(Duration(milliseconds: 150)).then((_) {
+      Future.delayed(Duration(milliseconds: 150)).then((_) async {
         setState(() => isLogo = true);
+        MainBloc.getInstance().dispatch(MainUpdateEvent());
+        MainBloc.getInstance().dispatch(MainRefreshEvent());
         Future.delayed(Duration(milliseconds: 350)).then((_) {
           setState(() => isProgress = true);
         });
