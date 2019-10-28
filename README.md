@@ -1,16 +1,25 @@
-# logos
+# Logos
 
-A new Flutter project.
+Приложение для водителей грузовых автомобилей. Создано в рамках регионального этапа хакатона Цифрового прорыва. 
+Проект был отмечен Here за лучшее использование Here Api среди всех участников. Также проект является одним из победителей регионального этапа. 
 
-## Getting Started
+## Возможности
+ - Просмотр точек доставки на карте
+ - Построение маршрута
+ - Связь с менеджерами
 
-This project is a starting point for a Flutter application.
+## Technologies
 
-A few resources to get you started if this is your first Flutter project:
+ - Flutter
+ - Firebase
+ - Here Api to build a route
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+##  Contacts
+@gicha1
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+gicha@itis.team
+
+
+##  P.S.
+
+В финале Цифрового прорыва мной было создано приложение EcoHub - победитель хакатона
